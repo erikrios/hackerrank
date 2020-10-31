@@ -11,7 +11,7 @@ public class Solution {
                 else
                     System.out.print(" ");
             }
-            System.out.println("");
+            System.out.print("\n");
         }
     }
 
