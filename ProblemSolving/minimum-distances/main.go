@@ -8,22 +8,22 @@ func main() {
 }
 
 func minimumDistances(a []int32) int32 {
-	minDistance := len(a) + 1
+	var minDistance int32 = int32(len(a) + 1)
+	mapper := make(map[int32]int32)
 
-	for i := 0; i < len(a)-1; i++ {
-		for j := i + 1; j < len(a); j++ {
-			if a[i] == a[j] {
-				if j-i < minDistance {
-					minDistance = j - i
-				}
-				break
+	for i := 0; i < len(a); i++ {
+		element := a[i]
+		if v, ok := mapper[element]; ok {
+			if distance := int32(i) - v; distance < minDistance {
+				minDistance = distance
 			}
 		}
+		mapper[element] = int32(i)
 	}
 
-	if minDistance == len(a)+1 {
+	if minDistance == int32(len(a)+1) {
 		return -1
 	}
 
-	return int32(minDistance)
+	return minDistance
 }
